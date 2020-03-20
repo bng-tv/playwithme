@@ -10,8 +10,7 @@ IRC_CHAN: str = getenv("IRC_CHAN")
 IRC_HOST: str = getenv("IRC_HOST", "irc.chat.twitch.tv")
 IRC_PORT: int = int(getenv("IRC_PORT", "6697"))
 IRC_TLS: bool = getenv("IRC_TLS", 'true').lower() == "true"
-IRC_BCM:str = getenv("IRC_BCD", "!playwithme")
-IRC_CMD: str = getenv("IRC_CMD", "^\!playwithme (?P<name>\w+ )?(?P<game>\w+)$")
+IRC_CMD: str = getenv("IRC_CMD", "^\!playwithme (?P<name>\w+? )?(?P<game>\w+)|^\!playwithme")
 IRC_HELP: str = getenv("IRC_HELP",
                        "To use this command, do !playwithme <in-game name> <game name, if missing it will be \"any\">")
 

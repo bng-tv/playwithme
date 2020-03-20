@@ -1,6 +1,6 @@
 import pydle
 import re
-from playwithme.config import IRC_CHAN, IRC_CMD, IRC_HELP, IRC_BCM
+from playwithme.config import IRC_CHAN, IRC_CMD, IRC_HELP
 from playwithme.model import StorageModel, session
 
 
@@ -16,7 +16,7 @@ class Bot(pydle.Client):
         regex = re.compile(IRC_CMD)
         search = regex.search(message)
         search = search.groupdict() if search is not None else None
-        if str(message).lower().startswith(str(IRC_BCM).lower()):
+        if search is not None:
             if search['name'] is None:
                 search['name'] = search['game']
                 search['game'] = 'any'

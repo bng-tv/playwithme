@@ -1,0 +1,6 @@
+click
+flask
+flask_admin
+flask_bootstrap
+pydle
+sqlalchemy

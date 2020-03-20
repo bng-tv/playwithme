@@ -4,20 +4,21 @@ from flask_admin.contrib.sqla import ModelView
 from flask_bootstrap import Bootstrap
 from sqlalchemy import func
 
-from playwithme.config import WEB_SECRET, CHAN, TITLE
+from playwithme.config import WEB_SECRET, IRC_CHAN, WEB_TITLE, WEB_ADMIN
 from playwithme.model import StorageModel, session
 
 web = Flask(__name__)
 web.config['SECRET_KEY'] = WEB_SECRET
 Bootstrap(web)
 
-admin = Admin(web)
-admin.add_views(ModelView(StorageModel, session()))
+if WEB_ADMIN:
+    admin = Admin(web)
+    admin.add_views(ModelView(StorageModel, session()))
 
 
 @web.route("/")
 def index():
-    title = "{}: {}".format(TITLE, CHAN)
+    title = "{}: {}".format(WEB_TITLE, IRC_CHAN)
     print(web.template_folder)
     ses = session()
 

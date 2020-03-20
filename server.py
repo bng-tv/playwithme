@@ -1,7 +1,7 @@
 import click
 
 from playwithme.bot import Bot
-from playwithme.config import NICK, HOST, TLS, PORT, PASS, WEB_HOST, WEB_PORT, DEBUG
+from playwithme.config import IRC_NICK, IRC_HOST, IRC_TLS, IRC_PORT, IRC_PASS, WEB_HOST, WEB_PORT, DEBUG
 from playwithme.model import base
 from playwithme.web import web as flask
 
@@ -18,8 +18,8 @@ def init():
 
 @cli.command()
 def bot():
-    client = Bot(nickname=NICK, username=NICK, realname=NICK)
-    client.run(HOST, tls=TLS, port=PORT, password=PASS)
+    client = Bot(nickname=IRC_NICK, username=IRC_NICK, realname=IRC_NICK)
+    client.run(IRC_HOST, tls=IRC_TLS, port=IRC_PORT, password=IRC_PASS)
 
 
 @cli.command()

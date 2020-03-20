@@ -20,6 +20,7 @@ class Bot(pydle.Client):
             if search['name'] is None:
                 search['name'] = search['game']
                 search['game'] = 'any'
+            search = {k: str(v).strip() for k, v in search.items()}
             if search['name'] is None:
                 await self.message(target, IRC_HELP, user=by)
             else:

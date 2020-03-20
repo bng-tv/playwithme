@@ -16,13 +16,15 @@ class Bot(pydle.Client):
         regex = re.compile(IRC_CMD)
         search = regex.search(message)
         search = search.groupdict() if search is not None else None
+        print(search)
         if search is not None:
             if search['name'] is None:
                 search['name'] = search['game']
-                search['game'] = 'any'
-            search = {k: str(v).strip() for k, v in search.items()}
+
+            search = {k: (str(v).strip() if v is not None else None) for k, v in search.items()}
+
             if search['name'] is None:
-                await self.message(target, IRC_HELP, user=by)
+                await self.message(target, str("@{}".format(by) + " " + IRC_HELP))
             else:
                 ses = session()
                 ses.add(StorageModel(
